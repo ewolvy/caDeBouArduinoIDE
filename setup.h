@@ -28,6 +28,7 @@
 #define FRECUENCIA_PWM 31250      // Frecuencia de los PWM del arduino
 #define RESOLUCION_N_BITS_PWM 8   // CAMBIAR A LA VEZ QUE MAX_PWM_SPEED
 #define MAX_PWM_SPEED 255         // CAMBIAR A LA VEZ QUE RESOLUCION_N_BITS_PWM
+#define MAX_SPEED 64
 
 #define LEFT_MOTOR_REV_PIN 33
 #define LEFT_MOTOR_FWD_PIN 32
@@ -38,5 +39,7 @@
 #define LEFT_MOTOR_FWD_CH 1
 #define RIGHT_MOTOR_REV_CH 2
 #define RIGHT_MOTOR_FWD_CH 3
+
+#define PASOS_CASILLA 1000
 
 #endif

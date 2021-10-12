@@ -1,4 +1,4 @@
-#include "main.h"
+ #include "main.h"
 
 ESP32Encoder myEncoderLeft, myEncoderRight;
 PinesMotores motor_izq;
@@ -8,20 +8,19 @@ void setup() {
   Serial.begin(115200);
   /*
   Inicialización de sensores de distancia
-  
+*/  
   Wire.begin();
   setup_sensor(VLDIAGIZQ, TYPE_VL);
   setup_sensor(VLFRONIZQ, TYPE_VL);
   setup_sensor(VLDIAGDCHA, TYPE_VL);
   setup_sensor(VLFRONDCHA, TYPE_VL);
-  */
 
   /*
   Inicialización de la pantalla
 
   setup_tft();
-  */
-
+*/
+  
   /*
   Inicialización de los encoders
   */
@@ -40,13 +39,16 @@ void setup() {
 void loop() {
   /*
   Pruebas de los sensores de distancia
-  
+  */
+  Serial.print("Distancia sensor diagonal izquierda: ");
   Serial.println(read_mm(VLDIAGIZQ));
+  Serial.print("Distancia sensor frontal izquierda: ");
   Serial.println(read_mm(VLFRONIZQ));
+  Serial.print("Distancia sensor diagonal derecha: ");
   Serial.println(read_mm(VLDIAGDCHA));
+  Serial.print("Distancia sensor frontal derecha: ");
   Serial.println(read_mm(VLFRONDCHA));
   Serial.println();
-  */
 
   /*
   Mostrar el voltaje en pantalla
@@ -64,19 +66,26 @@ void loop() {
   Serial.println(String((int32_t)myEncoderRight.getCount()));
  
   /*
-  Pruebas de motores
+  Pruebas básicas de motores
 
-  */
-/*   
-  Serial.println("Motor derecho al 50%");
-  mover_motor(motor_dch, 128);
+  
+  Serial.println("Motor derecho al 25%");
+  mover_motor(motor_dch, 64);
 
-  Serial.println("Motor izquierdo al 50%");
-  mover_motor(motor_izq, 128);
+  Serial.println("Motor izquierdo al 25%");
+  mover_motor(motor_izq, 64);
   delay(2000);
   motor_full_stop(motor_izq, motor_dch);
- */
-  delay(500);
+*/
+
+/*
+Pruebas avanzar casillas
+*/
+  Serial.println("Avanza 1");
+  avanza(motor_izq, motor_dch, myEncoderLeft, myEncoderRight, 1);
+
+  
+  delay(2000);
 }
 
 void setupEncoders(){
